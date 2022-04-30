@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import data from './data';
 
-const Submit = ({ numOfMeals, numOfVeg }) => {
+const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
   const [meals, setMeals] = useState([]);
 
   const calculateMeals = (numOfMeals, numOfVeg) => {
@@ -80,11 +80,19 @@ const Submit = ({ numOfMeals, numOfVeg }) => {
     return meals;
   };
 
+  //ensures that bot only works as long as alerts don't return truthy values
+  const handleSubmit = () => {
+    if (mealAlert || vegAlert) {
+      setMeals([]);
+      return meals;
+    } else {
+      return calculateMeals(numOfMeals, numOfVeg);
+    }
+  };
+
   return (
     <div>
-      <button onClick={() => calculateMeals(numOfMeals, numOfVeg)}>
-        submit
-      </button>
+      <button onClick={() => handleSubmit()}>submit</button>
       {meals.map((item, index) => {
         const { id, meal, vegOrNonVeg } = item;
         return (
@@ -94,6 +102,11 @@ const Submit = ({ numOfMeals, numOfVeg }) => {
           </p>
         );
       })}
+      {/* {(mealAlert || vegAlert) && (
+        <p className='alert alert-danger'>
+          ERROR: Please check your entries and try again
+        </p>
+      )} */}
     </div>
   );
 };

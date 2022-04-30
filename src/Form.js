@@ -7,33 +7,41 @@ const Form = () => {
   const [mealAlert, setMealAlert] = useState('');
   const [vegAlert, setVegAlert] = useState('');
 
-  // form submission
+  // form submission prevent page reload
   const submitHandler = (e) => {
     e.preventDefault();
+  };
+
+  useEffect(() => {
     // numOfMeals alert logic
-    if (numOfMeals > 7 || numOfMeals < 1) {
-      setMealAlert('ALERT: Number of meals must be a number between 1 and 7');
+    if (numOfMeals > 7 || numOfMeals < 0) {
+      setMealAlert(
+        'ALERT: Number of meals must be a positive number no greater than 7'
+      );
     } else if (isNaN(numOfMeals)) {
       setMealAlert('ALERT: Number of meals cannot contain letters');
     } else {
       setMealAlert('');
     }
+  }, [numOfMeals]);
+
+  useEffect(() => {
     // numOfVeg alert logic
     if (numOfVeg > 7) {
       setVegAlert(
-        'ALERT: Number of vegetarian meals must be a number between 0 and 7'
+        'ALERT: Number of vegetarian meals must be a positive number no greater than 7'
       );
     } else if (isNaN(numOfVeg)) {
       setVegAlert('ALERT: Number of meals cannot contain letters');
     } else {
       setVegAlert('');
     }
-  };
+  }, [numOfVeg]);
+
+  useEffect(() => {}, []);
 
   return (
     <div>
-      {mealAlert && <p class='alert alert-danger'>{mealAlert}</p>}
-      {vegAlert && <p class='alert alert-danger'>{vegAlert}</p>}
       <form onSubmit={submitHandler}>
         <div>
           <label htmlFor='numOfMeals'>
@@ -45,6 +53,7 @@ const Form = () => {
             onChange={(e) => setNumOfMeals(e.target.value)}
             required
           />
+          {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
         </div>
         <div>
           <label htmlFor='numOfVeg'>
@@ -56,8 +65,14 @@ const Form = () => {
             onChange={(e) => setNumOfVeg(e.target.value)}
             required
           />
+          {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
         </div>
-        <Submit numOfMeals={numOfMeals} numOfVeg={numOfVeg} />
+        <Submit
+          numOfMeals={numOfMeals}
+          numOfVeg={numOfVeg}
+          mealAlert={mealAlert}
+          vegAlert={vegAlert}
+        />
       </form>
     </div>
   );
