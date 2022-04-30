@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Submit from './Submit';
 
 const Form = () => {
-  const [numOfMeals, setNumOfMeals] = useState(0);
-  const [numOfVeg, setNumOfVeg] = useState(0);
+  const [numOfMeals, setNumOfMeals] = useState(7);
+  const [numOfVeg, setNumOfVeg] = useState(3);
   const [mealAlert, setMealAlert] = useState('');
   const [vegAlert, setVegAlert] = useState('');
 
@@ -14,12 +14,14 @@ const Form = () => {
 
   useEffect(() => {
     // numOfMeals alert logic
-    if (numOfMeals > 7 || numOfMeals < 0) {
+    if (numOfMeals > 7 || numOfMeals < 1) {
       setMealAlert(
-        'ALERT: Number of meals must be a positive number no greater than 7'
+        'Number of meals must be a positive number no greater than 7'
       );
     } else if (isNaN(numOfMeals)) {
-      setMealAlert('ALERT: Number of meals cannot contain letters');
+      setMealAlert(
+        'Number of meals cannot contain letters or special characters'
+      );
     } else {
       setMealAlert('');
     }
@@ -29,43 +31,39 @@ const Form = () => {
     // numOfVeg alert logic
     if (numOfVeg > 7) {
       setVegAlert(
-        'ALERT: Number of vegetarian meals must be a positive number no greater than 7'
+        'Number of vegetarian meals must be a positive number no greater than 7'
       );
     } else if (isNaN(numOfVeg)) {
-      setVegAlert('ALERT: Number of meals cannot contain letters');
+      setVegAlert(
+        'Number of meals cannot contain letters or special characters'
+      );
     } else {
       setVegAlert('');
     }
   }, [numOfVeg]);
 
-  useEffect(() => {}, []);
-
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
+      {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
+      <form onSubmit={submitHandler} className='meal-form'>
         <div>
-          <label htmlFor='numOfMeals'>
-            how many meals would you like to plan?
-          </label>
+          <label htmlFor='numOfMeals'>number of meals</label>
           <input
             id='numOfMeals'
             type='text'
             onChange={(e) => setNumOfMeals(e.target.value)}
             required
           />
-          {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
         </div>
         <div>
-          <label htmlFor='numOfVeg'>
-            how many meals would you like to be vegetarian?
-          </label>
+          <label htmlFor='numOfVeg'>number of vegetarian meals</label>
           <input
             id='numOfVeg'
             type='text'
             onChange={(e) => setNumOfVeg(e.target.value)}
             required
           />
-          {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
         </div>
         <Submit
           numOfMeals={numOfMeals}

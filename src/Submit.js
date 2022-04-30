@@ -92,21 +92,27 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
 
   return (
     <div>
-      <button onClick={() => handleSubmit()}>submit</button>
-      {meals.map((item, index) => {
-        const { id, meal, vegOrNonVeg } = item;
-        return (
-          <p key={id}>
-            {`${index + 1}. ${meal} `}
-            {vegOrNonVeg === 'vegetarian' ? '(vegetarian)' : '(non-vegetarian)'}
-          </p>
-        );
-      })}
-      {/* {(mealAlert || vegAlert) && (
+      <button class='btn submit' onClick={() => handleSubmit()}>
+        submit »
+      </button>
+      <div className='meal-results'>
+        {meals.map((item, index) => {
+          const { id, meal, vegOrNonVeg } = item;
+          return (
+            <p key={id}>
+              {`${index + 1}. ${meal} `}
+              {vegOrNonVeg === 'vegetarian'
+                ? '(vegetarian)'
+                : '(non-vegetarian)'}
+            </p>
+          );
+        })}
+        {/* {(mealAlert || vegAlert) && (
         <p className='alert alert-danger'>
           ERROR: Please check your entries and try again
         </p>
       )} */}
+      </div>
     </div>
   );
 };

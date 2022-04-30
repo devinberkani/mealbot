@@ -3,9 +3,13 @@ import Form from './Form';
 function Home() {
   return (
     <div className='main-container'>
-      <h1>welcome to mealbot</h1>
-      <h4>weekly meal planner</h4>
-      <Form />
+      <div className='main-container-center'>
+        <div className='title-container'>
+          <h2>welcome to mealbot</h2>
+          <h4>weekly meal planner</h4>
+        </div>
+        <Form />
+      </div>
     </div>
   );
 }
