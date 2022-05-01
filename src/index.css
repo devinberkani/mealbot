@@ -280,12 +280,13 @@ body {
 .main-container {
   background: var(--white);
   box-shadow: var(--shadow-4);
-  margin: 1em auto;
+  margin: 0.5em auto;
   height: auto;
   max-height: 95vh;
   overflow: scroll;
-  width: 475px;
-  padding: 2em;
+  width: 90vw;
+  max-width: 750px;
+  padding: 1.9em;
   border-radius: var(--borderRadius);
 }
 
@@ -328,13 +329,14 @@ body {
 /* meal results */
 
 .meal-results-title {
-  border-bottom: 3px dashed var(--primary-200);
-  margin-bottom: 1em;
+  border-bottom: 3px dotted var(--primary-200);
+  border-top: 3px dotted var(--primary-200);
+  margin: 2em auto;
 }
 
 .meal-results-title h3 {
   text-align: center;
-  margin: 1.2em auto;
+  margin: 0.3em auto;
   color: var(--primary-700);
   font-weight: bold;
   letter-spacing: 3px;
@@ -348,13 +350,14 @@ body {
 }
 
 .meal-results p {
-  margin: 0.85em;
+  margin: 1.25em auto;
   font-size: 0.85em;
   letter-spacing: 1px;
 }
 
 .meal {
   font-weight: bold;
+  color: var(--primary-800);
 }
 
 /* recipes */
@@ -383,13 +386,15 @@ body {
 .btn-show {
   display: inline;
   background: var(--primary-300);
-  margin-right: 0.5em;
-  padding: 0.6rem 2rem;
+  width: 10em;
+  margin: 0.5em;
+  padding: 0.6rem 1rem;
 }
 
 .btn-hide {
   display: inline;
   background: var(--primary-300);
-  margin-left: 0.5em;
-  padding: 0.6rem 2rem;
+  width: 10em;
+  margin: 0.5em;
+  padding: 0.6rem 1rem;
 }

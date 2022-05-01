@@ -101,7 +101,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
         {meals.length > 0 && (
           <div>
             <div className='meal-results-title'>
-              <h3>successfully planned {meals.length} meals with mealBot</h3>
+              <h3>{meals.length} meals planned:</h3>
             </div>
             <div className='show-hide-buttons'>
               <button
