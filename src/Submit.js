@@ -15,7 +15,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
     // while the length of the new array is less than numOfVeg...
     while (newMealArr.length < numOfVeg) {
       // get a new random number
-      let randomNumber = Math.floor(Math.random() * 19) + 1;
+      let randomNumber = Math.floor(Math.random() * (data.length - 1)) + 1;
       // map through entire data list and destructure
       data.map((item) => {
         const { id, meal, vegOrNonVeg } = item;
@@ -48,7 +48,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
     // while i is less than numOfMeals minus numOfVeg...
     while (newMealArr.length < numOfMeals - numOfVeg) {
       // get a new random number
-      let randomNumber = Math.floor(Math.random() * 19) + 1;
+      let randomNumber = Math.floor(Math.random() * (data.length - 1)) + 1;
       // map through entire data list and destructure
       data.map((item) => {
         const { id, meal, vegOrNonVeg } = item;
@@ -92,26 +92,32 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
 
   return (
     <div>
-      <button class='btn submit' onClick={() => handleSubmit()}>
-        submit »
+      <button className='btn submit' onClick={() => handleSubmit()}>
+        {meals.length > 0 ? 'generate new meals »' : 'submit »'}
       </button>
       <div className='meal-results'>
-        {meals.map((item, index) => {
-          const { id, meal, vegOrNonVeg } = item;
-          return (
-            <p key={id}>
-              {`${index + 1}. ${meal} `}
-              {vegOrNonVeg === 'vegetarian'
-                ? '(vegetarian)'
-                : '(non-vegetarian)'}
-            </p>
-          );
-        })}
-        {/* {(mealAlert || vegAlert) && (
-        <p className='alert alert-danger'>
-          ERROR: Please check your entries and try again
-        </p>
-      )} */}
+        {meals.length > 0 && (
+          <div className='meal-results-title'>
+            <h3>{meals.length} meals successfully planned by mealBot</h3>
+          </div>
+        )}
+        {meals.length > 0 ? (
+          meals.map((item, index) => {
+            const { id, meal, vegOrNonVeg } = item;
+            return (
+              <div key={id}>
+                <p>
+                  {`${index + 1}. ${meal} `}
+                  {vegOrNonVeg === 'vegetarian'
+                    ? '(vegetarian)'
+                    : '(non-vegetarian)'}
+                </p>
+              </div>
+            );
+          })
+        ) : (
+          <h5 className='result-directions'>*your results will appear below</h5>
+        )}
       </div>
     </div>
   );

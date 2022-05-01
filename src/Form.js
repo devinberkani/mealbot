@@ -14,13 +14,13 @@ const Form = () => {
 
   useEffect(() => {
     // numOfMeals alert logic
-    if (numOfMeals > 7 || numOfMeals < 1) {
-      setMealAlert(
-        'Number of meals must be a positive number no greater than 7'
-      );
+    if (numOfMeals < 1) {
+      setMealAlert('ALERT: Number of meals must be greater than 0');
+    } else if (numOfMeals > 7) {
+      setMealAlert('ALERT: Number of meals cannot be greater than 7');
     } else if (isNaN(numOfMeals)) {
       setMealAlert(
-        'Number of meals cannot contain letters or special characters'
+        'ALERT: Number of meals cannot contain letters or special characters'
       );
     } else {
       setMealAlert('');
@@ -30,17 +30,23 @@ const Form = () => {
   useEffect(() => {
     // numOfVeg alert logic
     if (numOfVeg > 7) {
+      setVegAlert('ALERT: Number of vegetarian meals cannot be greater than 7');
+    } else if (numOfVeg < 0) {
       setVegAlert(
-        'Number of vegetarian meals must be a positive number no greater than 7'
+        'ALERT: Number of vegetarian meals cannot be a negative number'
       );
     } else if (isNaN(numOfVeg)) {
       setVegAlert(
-        'Number of meals cannot contain letters or special characters'
+        'ALERT: Number of vegetarian meals cannot contain letters or special characters'
+      );
+    } else if (numOfVeg > numOfMeals) {
+      setVegAlert(
+        'ALERT: Number of vegetarian meals cannot be greater than the number of total meals'
       );
     } else {
       setVegAlert('');
     }
-  }, [numOfVeg]);
+  }, [numOfVeg, numOfMeals]);
 
   return (
     <div>
@@ -62,7 +68,6 @@ const Form = () => {
             id='numOfVeg'
             type='text'
             onChange={(e) => setNumOfVeg(e.target.value)}
-            required
           />
         </div>
         <Submit
