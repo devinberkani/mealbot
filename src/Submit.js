@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import data from './data';
+import Recipe from './Recipe';
 
 const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
   const [meals, setMeals] = useState([]);
+  const [showAllRecipes, setShowAllRecipes] = useState(false);
 
   const calculateMeals = (numOfMeals, numOfVeg) => {
     //initialize the master meal array to push all final meals to
@@ -18,7 +20,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
       let randomNumber = Math.floor(Math.random() * (data.length - 1)) + 1;
       // map through entire data list and destructure
       data.map((item) => {
-        const { id, meal, vegOrNonVeg } = item;
+        const { id, meal, vegOrNonVeg, recipe } = item;
         // if the random number matches the id of the meal...
         if (randomNumber === id && vegOrNonVeg === 'vegetarian') {
           // push that id into the new array...
@@ -31,8 +33,8 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
           newMealArr.map((vegId) => {
             if (vegId === id) {
               //push that info into veg array
-              vegArray.push({ id, meal, vegOrNonVeg });
-              masterMealArray.push({ id, meal, vegOrNonVeg });
+              vegArray.push({ id, meal, vegOrNonVeg, recipe });
+              masterMealArray.push({ id, meal, vegOrNonVeg, recipe });
             }
             return masterMealArray;
           });
@@ -51,7 +53,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
       let randomNumber = Math.floor(Math.random() * (data.length - 1)) + 1;
       // map through entire data list and destructure
       data.map((item) => {
-        const { id, meal, vegOrNonVeg } = item;
+        const { id, meal, vegOrNonVeg, recipe } = item;
         // if the random number matches the id of the meal...
         if (randomNumber === id && vegOrNonVeg === 'nonVegetarian') {
           // push that id into the new array...
@@ -64,8 +66,8 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
           newMealArr.map((nonVegId) => {
             if (nonVegId === id) {
               //push that info into nonVeg array
-              nonVegArray.push({ id, meal, vegOrNonVeg });
-              masterMealArray.push({ id, meal, vegOrNonVeg });
+              nonVegArray.push({ id, meal, vegOrNonVeg, recipe });
+              masterMealArray.push({ id, meal, vegOrNonVeg, recipe });
             }
             return masterMealArray;
           });
@@ -97,20 +99,42 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
       </button>
       <div className='meal-results'>
         {meals.length > 0 && (
-          <div className='meal-results-title'>
-            <h3>{meals.length} meals successfully planned by mealBot</h3>
+          <div>
+            <div className='meal-results-title'>
+              <h3>successfully planned {meals.length} meals with mealBot</h3>
+            </div>
+            <div className='show-hide-buttons'>
+              <button
+                onClick={() => setShowAllRecipes(true)}
+                className='btn btn-show'
+              >
+                show all recipes
+              </button>
+              <button
+                onClick={() => setShowAllRecipes(false)}
+                className='btn btn-hide'
+              >
+                hide all recipes
+              </button>
+            </div>
           </div>
         )}
         {meals.length > 0 ? (
           meals.map((item, index) => {
-            const { id, meal, vegOrNonVeg } = item;
+            const { id, meal, vegOrNonVeg, recipe } = item;
             return (
               <div key={id}>
                 <p>
-                  {`${index + 1}. ${meal} `}
-                  {vegOrNonVeg === 'vegetarian'
-                    ? '(vegetarian)'
-                    : '(non-vegetarian)'}
+                  {`${index + 1}. `}
+                  <span className='veg-non-veg'>
+                    {vegOrNonVeg === 'vegetarian'
+                      ? '[vegetarian] '
+                      : '[non-vegetarian] '}
+                  </span>
+                  <span className='meal'>{meal}</span>
+                  <span className='recipe'>
+                    <Recipe id={id} showAllRecipes={showAllRecipes} />
+                  </span>
                 </p>
               </div>
             );
