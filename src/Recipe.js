@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import data from './data';
 
-const Recipe = ({ id, showAllRecipes }) => {
+const Recipe = ({
+  id,
+  showAllRecipes,
+  hideAllRecipes,
+  setShowAllRecipes,
+  setHideAllRecipes,
+}) => {
   const [showRecipe, setShowRecipe] = useState(false);
   const [specificRecipe, setSpecificRecipe] = useState('');
 
   //show all recipes logic
   useEffect(() => {
-    if (showAllRecipes) {
+    if (showAllRecipes && !hideAllRecipes) {
       data.map((item) => {
         if (item.id === id) {
           return setSpecificRecipe(item.recipe);
@@ -19,7 +25,7 @@ const Recipe = ({ id, showAllRecipes }) => {
 
   //hide all recipes logic
   useEffect(() => {
-    if (!showAllRecipes) {
+    if (hideAllRecipes && !showAllRecipes) {
       data.map((item) => {
         if (item.id === id) {
           return setSpecificRecipe(item.recipe);
@@ -27,7 +33,7 @@ const Recipe = ({ id, showAllRecipes }) => {
       });
       setShowRecipe(false);
     }
-  }, [showAllRecipes]);
+  }, [hideAllRecipes]);
 
   //show individual recipe logic
   const getRecipe = (specificId) => {
@@ -37,13 +43,19 @@ const Recipe = ({ id, showAllRecipes }) => {
       }
     });
     setShowRecipe(true);
+    setHideAllRecipes(false);
+  };
+
+  const hideRecipe = () => {
+    setShowRecipe(false);
+    setShowAllRecipes(false);
   };
 
   return (
     <span>
       <span className='show-hide-toggle'>
         {showRecipe ? (
-          <a href='#' onClick={() => setShowRecipe(false)}>
+          <a href='#' onClick={() => hideRecipe()}>
             Hide Recipe
           </a>
         ) : (

@@ -280,7 +280,7 @@ body {
 .main-container {
   background: var(--white);
   box-shadow: var(--shadow-4);
-  margin: 0.5em auto;
+  margin: 0 auto;
   height: auto;
   max-height: 95vh;
   overflow: scroll;
@@ -288,6 +288,12 @@ body {
   max-width: 750px;
   padding: 1.9em;
   border-radius: var(--borderRadius);
+  /* center vertically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .title-container {
@@ -397,4 +403,25 @@ body {
   width: 10em;
   margin: 0.5em;
   padding: 0.6rem 1rem;
+}
+
+/* larger screens */
+
+@media screen and (min-width: 600px) {
+  /* main container */
+  .main-container {
+    padding: 1.9em 5em;
+    max-height: 80vh;
+  }
+
+  /* hide and show recipe buttons */
+  .btn-show {
+    width: 45%;
+    margin: 0.5em 0.75em;
+  }
+
+  .btn-hide {
+    width: 45%;
+    margin: 0.5em 0.75em;
+  }
 }

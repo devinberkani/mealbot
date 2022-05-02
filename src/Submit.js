@@ -5,6 +5,7 @@ import Recipe from './Recipe';
 const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
   const [meals, setMeals] = useState([]);
   const [showAllRecipes, setShowAllRecipes] = useState(false);
+  const [hideAllRecipes, setHideAllRecipes] = useState(true);
 
   const calculateMeals = (numOfMeals, numOfVeg) => {
     //initialize the master meal array to push all final meals to
@@ -85,11 +86,27 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
   //ensures that bot only works as long as alerts don't return truthy values
   const handleSubmit = () => {
     if (mealAlert || vegAlert) {
+      setShowAllRecipes(false);
+      setHideAllRecipes(true);
       setMeals([]);
       return meals;
     } else {
+      setShowAllRecipes(false);
+      setHideAllRecipes(true);
       return calculateMeals(numOfMeals, numOfVeg);
     }
+  };
+
+  //show all recipes
+  const showAllRecipesHandler = () => {
+    setShowAllRecipes(true);
+    setHideAllRecipes(false);
+  };
+
+  //hide all recipes
+  const hideAllRecipesHandler = () => {
+    setHideAllRecipes(true);
+    setShowAllRecipes(false);
   };
 
   return (
@@ -105,13 +122,13 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
             </div>
             <div className='show-hide-buttons'>
               <button
-                onClick={() => setShowAllRecipes(true)}
+                onClick={() => showAllRecipesHandler()}
                 className='btn btn-show'
               >
                 show all recipes
               </button>
               <button
-                onClick={() => setShowAllRecipes(false)}
+                onClick={() => hideAllRecipesHandler()}
                 className='btn btn-hide'
               >
                 hide all recipes
@@ -133,7 +150,13 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
                   </span>
                   <span className='meal'>{meal}</span>
                   <span className='recipe'>
-                    <Recipe id={id} showAllRecipes={showAllRecipes} />
+                    <Recipe
+                      id={id}
+                      showAllRecipes={showAllRecipes}
+                      hideAllRecipes={hideAllRecipes}
+                      setShowAllRecipes={setShowAllRecipes}
+                      setHideAllRecipes={setHideAllRecipes}
+                    />
                   </span>
                 </p>
               </div>
