@@ -146,15 +146,18 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
               <div key={id}>
                 <p>
                   {`${index + 1}. `}
-                  <span className='veg-non-veg'>
-                    {vegOrNonVeg === 'vegetarian'
-                      ? '[vegetarian] '
-                      : '[non-vegetarian] '}
+                  <span>
+                    {vegOrNonVeg === 'vegetarian' ? (
+                      <span className='veg'>vegetarian</span>
+                    ) : (
+                      <span className='non-veg'>non-vegetarian</span>
+                    )}
                   </span>
-                  <span className='meal'>{meal}</span>
+                  <span className='meal'> {meal}</span>
                   <span className='recipe'>
                     <Recipe
                       id={id}
+                      meal={meal}
                       showAllRecipes={showAllRecipes}
                       hideAllRecipes={hideAllRecipes}
                       setShowAllRecipes={setShowAllRecipes}

@@ -52,7 +52,7 @@ const Form = () => {
     <div>
       <div className='title-container'>
         <h2>welcome to MealBot</h2>
-        <h4>weekly meal planner</h4>
+        <h4>weekly meal idea generator</h4>
       </div>
       {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
       {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
@@ -60,6 +60,7 @@ const Form = () => {
         <div>
           <label htmlFor='numOfMeals'>number of meals</label>
           <input
+            autoComplete='off'
             id='numOfMeals'
             type='text'
             onChange={(e) => setNumOfMeals(e.target.value)}
@@ -69,6 +70,7 @@ const Form = () => {
         <div>
           <label htmlFor='numOfVeg'>number of vegetarian meals</label>
           <input
+            autoComplete='off'
             id='numOfVeg'
             type='text'
             onChange={(e) => setNumOfVeg(e.target.value)}

@@ -3,6 +3,7 @@ import data from './data';
 
 const Recipe = ({
   id,
+  meal,
   showAllRecipes,
   hideAllRecipes,
   setShowAllRecipes,
@@ -64,7 +65,13 @@ const Recipe = ({
           </a>
         )}
       </span>
-      {showRecipe && <span className='specific-recipe'>{specificRecipe}</span>}
+      {showRecipe && (
+        <a
+          href={specificRecipe}
+          className='specific-recipe'
+          target='_blank'
+        >{`${meal} recipe`}</a>
+      )}
     </span>
   );
 };

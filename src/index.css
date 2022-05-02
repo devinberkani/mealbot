@@ -126,6 +126,7 @@ small,
 }
 
 a {
+  color: var(--primary-500);
   text-decoration: none;
 }
 
@@ -304,6 +305,7 @@ body {
 }
 
 .title-container h2 {
+  color: var(--primary-800);
   margin-bottom: 0.1em;
 }
 
@@ -336,6 +338,11 @@ body {
 
 /* meal results */
 
+.meal-results {
+  display: block;
+  margin: 0 auto;
+}
+
 .meal-results-title {
   border-bottom: 3px dotted var(--primary-200);
   border-top: 3px dotted var(--primary-200);
@@ -343,11 +350,13 @@ body {
 }
 
 .meal-results-title h3 {
+  font-size: 1.7em;
   text-align: center;
   margin: 0.5em auto;
   color: var(--primary-700);
   font-weight: bold;
   letter-spacing: 3px;
+  margin: 10px 0;
 }
 
 /* animation */
@@ -355,7 +364,7 @@ body {
 .object {
   animation: MoveUpDown 1.2s linear infinite;
   position: relative;
-  margin: 0 10px;
+  margin: 0;
 }
 
 @keyframes MoveUpDown {
@@ -377,8 +386,16 @@ body {
 
 .meal-results p {
   margin: 1.25em auto;
-  font-size: 0.95em;
+  font-size: 1.25em;
   letter-spacing: 1px;
+}
+
+.veg {
+  background: var(--green-light);
+}
+
+.non-veg {
+  background: var(--grey-300);
 }
 
 .meal {
@@ -388,10 +405,6 @@ body {
 
 /* recipes */
 
-.recipe {
-  display: inline;
-}
-
 .show-hide-toggle {
   text-decoration: underline;
   margin-left: 5px;
@@ -399,9 +412,24 @@ body {
 
 .specific-recipe {
   display: block;
-  border: 2px dotted var(--grey-400);
-  padding: 0.5em 0.75em;
-  margin: 0.75em;
+  height: auto;
+  padding: 1em 2em;
+  margin: 0.75em 0em;
+  text-transform: capitalize;
+  text-align: center;
+  background: var(--grey-500);
+  color: var(--grey-50);
+  font-weight: bold;
+  font-size: 0.8em;
+  border-radius: var(--borderRadius);
+}
+
+a[target='_blank']::after {
+  /* for icon that opens in new tab */
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+  /* turn it white */
+  filter: invert(100%);
+  margin: 0 3px 0 5px;
 }
 
 .show-hide-buttons {
@@ -445,8 +473,14 @@ body {
     margin: 0.5em 0.75em;
   }
 
-  /* meal results text */
+  /* meal results */
+
+  .meal-results-title h3 {
+    font-size: 1.953rem;
+    margin: 10px 10px;
+  }
+
   .meal-results p {
-    padding: 0 5.5em;
+    padding: 0 1.5em;
   }
 }
