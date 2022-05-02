@@ -444,4 +444,9 @@ body {
     width: 45%;
     margin: 0.5em 0.75em;
   }
+
+  /* meal results text */
+  .meal-results p {
+    padding: 0 5.5em;
+  }
 }
