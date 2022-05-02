@@ -169,7 +169,13 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
             );
           })
         ) : (
-          <h5 className='result-directions'>*your results will appear below</h5>
+          <div className='meal-results-title'>
+            <h5>
+              <span className='object'>⇩</span> Your results will appear below{' '}
+              <span className='object'>⇩</span>
+            </h5>
+          </div>
+          // <h5 className='result-directions'>*your results will appear below</h5>
         )}
       </div>
     </div>

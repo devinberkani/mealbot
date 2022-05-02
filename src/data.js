@@ -126,6 +126,38 @@ const data = [
     vegOrNonVeg: 'nonVegetarian',
     recipe: 'https://www.allrecipes.com/recipe/49404/juiciest-hamburgers-ever/',
   },
+  {
+    id: 21,
+    meal: 'Hawaiian pineapple chicken',
+    vegOrNonVeg: 'nonVegetarian',
+    recipe: 'https://www.saltysidedish.com/pineapple-hawaiian-chicken/',
+  },
+  {
+    id: 22,
+    meal: 'Tuna noodle casserole',
+    vegOrNonVeg: 'nonVegetarian',
+    recipe:
+      'https://www.mamalovesfood.com/tuna-casserole/?utm_source=pinterest&utm_medium=social&utm_campaign=social-pug',
+  },
+  {
+    id: 23,
+    meal: 'Oven baked spaghetti',
+    vegOrNonVeg: 'nonVegetarian',
+    recipe: 'https://pin.it/6NU28h5',
+  },
+  {
+    id: 24,
+    meal: 'Sheet pan steak and vegetables',
+    vegOrNonVeg: 'nonVegetarian',
+    recipe: 'https://www.oliviascuisine.com/sheet-pan-steak-and-veggies/',
+  },
+  {
+    id: 25,
+    meal: 'Creamy white enchiladas',
+    vegOrNonVeg: 'nonVegetarian',
+    recipe:
+      'https://www.midgetmomma.com/tasty-tuesday-white-chicken-enchiladas/',
+  },
 ];
 
 export default data;

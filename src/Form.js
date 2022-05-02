@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Submit from './Submit';
+import image from './mealbot-logo.png';
 
 const Form = () => {
   const [numOfMeals, setNumOfMeals] = useState(7);
@@ -51,6 +52,7 @@ const Form = () => {
   return (
     <div>
       <div className='title-container'>
+        <img className='logo' src={image} alt='' />
         <h2>welcome to MealBot</h2>
         <h4>weekly meal idea generator</h4>
       </div>
