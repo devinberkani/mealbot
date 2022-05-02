@@ -3,7 +3,7 @@ import Submit from './Submit';
 
 const Form = () => {
   const [numOfMeals, setNumOfMeals] = useState(7);
-  const [numOfVeg, setNumOfVeg] = useState(3);
+  const [numOfVeg, setNumOfVeg] = useState(0);
   const [mealAlert, setMealAlert] = useState('');
   const [vegAlert, setVegAlert] = useState('');
 
@@ -50,6 +50,10 @@ const Form = () => {
 
   return (
     <div>
+      <div className='title-container'>
+        <h2>welcome to MealBot</h2>
+        <h4>weekly meal planner</h4>
+      </div>
       {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
       {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
       <form onSubmit={submitHandler} className='meal-form'>

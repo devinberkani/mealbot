@@ -10,7 +10,8 @@ Global Styles
   box-sizing: border-box;
 }
 /* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 html {
   font-size: 100%;
@@ -48,15 +49,15 @@ html {
   --green-dark: #0f5132;
 
   /* fonts  */
-  --headingFont: 'Roboto', sans-serif;
-  --bodyFont: 'Nunito', sans-serif;
+  --headingFont: 'Roboto Condensed', sans-serif;
+  --bodyFont: 'Roboto Condensed', sans-serif;
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
   /* rest of the vars */
   --backgroundColor: var(--grey-50);
   --textColor: var(--grey-900);
   --borderRadius: 0.25rem;
-  --letterSpacing: 1px;
+  --letterSpacing: 2px;
   --transition: 0.3s ease-in-out all;
   --max-width: 1120px;
   --fixed-width: 600px;
@@ -145,6 +146,7 @@ ul {
 /* buttons */
 
 .btn {
+  font-family: var(--bodyFont);
   cursor: pointer;
   color: var(--white);
   background: var(--primary-500);
@@ -183,7 +185,7 @@ ul {
 
 .alert-danger {
   color: var(--red-dark);
-  font-size: 0.85em;
+  font-size: 1em;
   /* background: var(--red-light); */
 }
 .alert-success {
@@ -337,15 +339,33 @@ body {
 .meal-results-title {
   border-bottom: 3px dotted var(--primary-200);
   border-top: 3px dotted var(--primary-200);
-  margin: 2em auto;
+  margin: 2.25em auto;
 }
 
 .meal-results-title h3 {
   text-align: center;
-  margin: 0.3em auto;
+  margin: 0.5em auto;
   color: var(--primary-700);
   font-weight: bold;
   letter-spacing: 3px;
+}
+
+/* animation */
+
+.object {
+  animation: MoveUpDown 1.2s linear infinite;
+  position: relative;
+  margin: 0 10px;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: -10px;
+  }
 }
 
 .result-directions {
@@ -357,7 +377,7 @@ body {
 
 .meal-results p {
   margin: 1.25em auto;
-  font-size: 0.85em;
+  font-size: 0.95em;
   letter-spacing: 1px;
 }
 
