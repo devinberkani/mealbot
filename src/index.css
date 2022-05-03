@@ -182,6 +182,7 @@ ul {
   /* margin-bottom: 1rem; */
   margin: 0.4em auto;
   border-color: transparent;
+  padding: 0 2em;
 }
 
 .alert-danger {
@@ -289,7 +290,8 @@ body {
   overflow: scroll;
   width: 90vw;
   max-width: 600px;
-  padding: 1.9em;
+  padding: 1.9em 0em;
+  padding-bottom: 0;
   border-radius: var(--borderRadius);
   /* center vertically */
   position: absolute;
@@ -320,6 +322,10 @@ body {
 
 /* meal form */
 
+.form-padding-container {
+  padding: 0 2em;
+}
+
 .meal-form {
   text-align: left;
   text-transform: capitalize;
@@ -344,6 +350,15 @@ body {
 .submit-btn-bottom-wrapper {
   position: sticky;
   bottom: 0;
+  background: var(--white);
+  padding: 0 1em;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  /* box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.submit-btn-bottom-wrapper .submit {
+  margin-top: -2em;
 }
 
 /* meal results */
@@ -351,6 +366,9 @@ body {
 .meal-results {
   display: block;
   margin: 0 auto;
+  padding: 0 2em;
+  padding-bottom: 1.9em;
+  margin-bottom: -1em;
 }
 
 .meal-results-title {
@@ -362,7 +380,7 @@ body {
 .meal-results-title h3 {
   font-size: 1.3em;
   text-align: center;
-  color: var(--primary-700);
+  color: var(--primary-600);
   font-weight: bold;
   letter-spacing: 3px;
   margin: 15px 0;
@@ -571,7 +589,8 @@ a[target='_blank']::after {
 @media screen and (min-width: 600px) {
   /* main container */
   .main-container {
-    padding: 1.9em 2em;
+    padding: 1.9em 0;
+    padding-bottom: 0;
     max-height: 80vh;
   }
 

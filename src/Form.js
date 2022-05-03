@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Submit from './Submit';
 import image from './mealbot-logo.png';
 
 const Form = () => {
-  const [numOfMeals, setNumOfMeals] = useState(7);
+  const [numOfMeals, setNumOfMeals] = useState(1);
   const [numOfVeg, setNumOfVeg] = useState(0);
   const [mealAlert, setMealAlert] = useState('');
   const [vegAlert, setVegAlert] = useState('');
 
-  // form submission prevent page reload
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
+  // useRef to be able to get the length of the numOfMeals input
+  const numOfMealsInput = useRef('one');
 
   useEffect(() => {
-    // numOfMeals alert logic
-    if (numOfMeals < 1) {
+    // numOfMeals alert logic  //if numOfVeg is larger than the numOfMeals input
+    if (numOfMeals < 1 || numOfVeg > numOfMealsInput.current.value) {
       setMealAlert('ALERT: Number of meals must be greater than 0');
     } else if (numOfMeals > 7) {
       setMealAlert('ALERT: Number of meals cannot be greater than 7');
@@ -26,7 +24,7 @@ const Form = () => {
     } else {
       setMealAlert('');
     }
-  }, [numOfMeals]);
+  }, [numOfMeals, numOfVeg, numOfMealsInput]);
 
   useEffect(() => {
     // numOfVeg alert logic
@@ -58,25 +56,28 @@ const Form = () => {
       </div>
       {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
       {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
-      <form onSubmit={submitHandler} className='meal-form'>
-        <div>
-          <label htmlFor='numOfMeals'>number of meals</label>
-          <input
-            autoComplete='off'
-            id='numOfMeals'
-            type='text'
-            onChange={(e) => setNumOfMeals(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='numOfVeg'>number of vegetarian meals</label>
-          <input
-            autoComplete='off'
-            id='numOfVeg'
-            type='text'
-            onChange={(e) => setNumOfVeg(e.target.value)}
-          />
+      <form className='meal-form'>
+        <div className='form-padding-container'>
+          <div>
+            <label htmlFor='numOfMeals'>number of meals</label>
+            <input
+              ref={numOfMealsInput}
+              autoComplete='off'
+              id='numOfMeals'
+              type='text'
+              onChange={(e) => setNumOfMeals(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='numOfVeg'>number of vegetarian meals</label>
+            <input
+              autoComplete='off'
+              id='numOfVeg'
+              type='text'
+              onChange={(e) => setNumOfVeg(e.target.value)}
+            />
+          </div>
         </div>
         <Submit
           numOfMeals={numOfMeals}

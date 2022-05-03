@@ -113,12 +113,12 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
 
   return (
     <div>
-      {!meals.length > 0 && (
-        <button className='btn submit' onClick={() => handleSubmit()}>
-          submit »
-        </button>
-      )}
       <div className='meal-results'>
+        {!meals.length > 0 && (
+          <button className='btn submit' onClick={() => handleSubmit()}>
+            submit »
+          </button>
+        )}
         {meals.length > 0 && (
           <div>
             <div className='meal-results-title'>
