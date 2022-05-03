@@ -351,9 +351,10 @@ body {
   position: sticky;
   bottom: 0;
   background: var(--white);
-  padding: 0 1em;
-  padding-top: 1em;
-  padding-bottom: 1.5em;
+  padding: 0 2em;
+  padding-top: 0.85em;
+  padding-bottom: 1em;
+  margin-top: -2em;
   /* box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); */
 }
 
@@ -368,7 +369,6 @@ body {
   margin: 0 auto;
   padding: 0 2em;
   padding-bottom: 1.9em;
-  margin-bottom: -1em;
 }
 
 .meal-results-title {
@@ -591,7 +591,7 @@ a[target='_blank']::after {
   .main-container {
     padding: 1.9em 0;
     padding-bottom: 0;
-    max-height: 80vh;
+    max-height: 90vh;
   }
 
   /* hide and show recipe buttons */
