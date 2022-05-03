@@ -11,6 +11,11 @@ const Form = () => {
   // useRef to be able to get the length of the numOfMeals input
   const numOfMealsInput = useRef('one');
 
+  // form submit handler
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     // numOfMeals alert logic  //if numOfVeg is larger than the numOfMeals input
     if (numOfMeals < 1 || numOfVeg > numOfMealsInput.current.value) {
@@ -56,7 +61,7 @@ const Form = () => {
       </div>
       {mealAlert ? <p className='alert alert-danger'>{mealAlert}</p> : ' '}
       {vegAlert ? <p className='alert alert-danger'>{vegAlert}</p> : ' '}
-      <form className='meal-form'>
+      <form onSubmit={submitHandler} className='meal-form'>
         <div className='form-padding-container'>
           <div>
             <label htmlFor='numOfMeals'>number of meals</label>
