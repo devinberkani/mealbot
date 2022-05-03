@@ -11,6 +11,8 @@ const Recipe = ({
 }) => {
   const [showRecipe, setShowRecipe] = useState(false);
   const [specificRecipe, setSpecificRecipe] = useState('');
+  const [linkCopied, setLinkCopied] = useState(false);
+  const [copiedAlert, setCopiedAlert] = useState('');
 
   //show all recipes logic
   useEffect(() => {
@@ -52,6 +54,21 @@ const Recipe = ({
     setShowAllRecipes(false);
   };
 
+  // copy to clipboard
+  const handleCopy = () => {
+    navigator.clipboard.writeText(specificRecipe);
+    setCopiedAlert('recipe copied to clipboard');
+    setLinkCopied(true);
+    setTimeout(() => {
+      setCopiedAlert('');
+      setLinkCopied(false);
+    }, '2000');
+  };
+
+  useEffect(() => {
+    return clearTimeout();
+  }, [handleCopy]);
+
   return (
     <span>
       <span className='show-hide-toggle'>
@@ -66,11 +83,20 @@ const Recipe = ({
         )}
       </span>
       {showRecipe && (
-        <a
-          href={specificRecipe}
-          className='specific-recipe'
-          target='_blank'
-        >{`${meal} recipe`}</a>
+        <span>
+          <span className='specific-recipe'>
+            <a
+              className='btn recipe-btn'
+              href={specificRecipe}
+              target='_blank'
+            >{`${meal} recipe`}</a>
+            <button className='btn copy-btn' onClick={() => handleCopy()}>
+              copy link
+              <i className='fa-solid fa-copy'></i>
+            </button>
+          </span>
+          {linkCopied && <div className='copied-alert'>{copiedAlert}</div>}
+        </span>
       )}
     </span>
   );

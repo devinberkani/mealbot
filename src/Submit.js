@@ -109,11 +109,15 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
     setShowAllRecipes(false);
   };
 
+  const copyToClipBoard = () => {};
+
   return (
     <div>
-      <button className='btn submit' onClick={() => handleSubmit()}>
-        {meals.length > 0 ? 'generate new meals »' : 'submit »'}
-      </button>
+      {!meals.length > 0 && (
+        <button className='btn submit' onClick={() => handleSubmit()}>
+          submit »
+        </button>
+      )}
       <div className='meal-results'>
         {meals.length > 0 && (
           <div>
@@ -123,6 +127,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
                 <span className='object'>⇩</span>
               </h3>
             </div>
+            {/* show all/hide all recipe buttons */}
             <div className='show-hide-buttons'>
               <button
                 onClick={() => showAllRecipesHandler()}
@@ -171,13 +176,20 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
         ) : (
           <div className='meal-results-title'>
             <h5>
-              <span className='object'>⇩</span> Your results will appear below{' '}
+              <span className='object'>⇩</span> your meals will appear below{' '}
               <span className='object'>⇩</span>
             </h5>
           </div>
           // <h5 className='result-directions'>*your results will appear below</h5>
         )}
       </div>
+      {meals.length > 0 && (
+        <div className='submit-btn-bottom-wrapper'>
+          <button className='btn submit' onClick={() => handleSubmit()}>
+            generate new meals »
+          </button>
+        </div>
+      )}
     </div>
   );
 };

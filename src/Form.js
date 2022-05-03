@@ -19,7 +19,7 @@ const Form = () => {
       setMealAlert('ALERT: Number of meals must be greater than 0');
     } else if (numOfMeals > 7) {
       setMealAlert('ALERT: Number of meals cannot be greater than 7');
-    } else if (isNaN(numOfMeals)) {
+    } else if (isNaN(numOfMeals) || numOfMeals.toString().includes('.')) {
       setMealAlert(
         'ALERT: Number of meals cannot contain letters or special characters'
       );
@@ -36,7 +36,7 @@ const Form = () => {
       setVegAlert(
         'ALERT: Number of vegetarian meals cannot be a negative number'
       );
-    } else if (isNaN(numOfVeg)) {
+    } else if (isNaN(numOfVeg) || numOfVeg.toString().includes('.')) {
       setVegAlert(
         'ALERT: Number of vegetarian meals cannot contain letters or special characters'
       );
