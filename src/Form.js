@@ -1,12 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Submit from './Submit';
 import image from './mealbot-logo.png';
+import { useGlobalContext } from './context';
 
 const Form = () => {
-  const [numOfMeals, setNumOfMeals] = useState(1);
-  const [numOfVeg, setNumOfVeg] = useState(0);
-  const [mealAlert, setMealAlert] = useState('');
-  const [vegAlert, setVegAlert] = useState('');
+  // ===============
+  // import context
+  // ===============
+  const {
+    numOfMeals,
+    setNumOfMeals,
+    numOfVeg,
+    setNumOfVeg,
+    mealAlert,
+    setMealAlert,
+    vegAlert,
+    setVegAlert,
+  } = useGlobalContext();
 
   // useRef to be able to get the length of the numOfMeals input
   const numOfMealsInput = useRef('one');
@@ -84,12 +94,7 @@ const Form = () => {
             />
           </div>
         </div>
-        <Submit
-          numOfMeals={numOfMeals}
-          numOfVeg={numOfVeg}
-          mealAlert={mealAlert}
-          vegAlert={vegAlert}
-        />
+        <Submit />
       </form>
     </div>
   );

@@ -309,6 +309,7 @@ body {
 .title-container {
   text-align: center;
   margin-bottom: 1.75em;
+  padding: 0 1em;
 }
 
 .title-container h2 {
@@ -359,7 +360,7 @@ body {
 }
 
 .submit-btn-bottom-wrapper .submit {
-  margin-top: -2em;
+  margin-top: -1em;
 }
 
 /* meal results */
@@ -374,6 +375,8 @@ body {
 .meal-results-title {
   border-bottom: 3px dotted var(--grey-300);
   border-top: 3px dotted var(--grey-300);
+  padding: 0.25em 0;
+  border-radius: var(--borderRadius);
   margin-top: 1.75em;
 }
 
@@ -421,10 +424,12 @@ body {
 }
 
 .meal-results p {
-  margin: 2em auto;
+  margin: 1.5em auto;
   font-size: 1.2em;
   letter-spacing: 1px;
-  padding: 0 0.5em;
+  padding: 1em 0.5em !important;
+  background: var(--grey-100);
+  border-radius: var(--borderRadius);
 }
 
 .veg {
@@ -454,6 +459,8 @@ body {
   grid-template-columns: 1fr;
   justify-content: center;
   gap: 0.4em;
+  padding: 0.75em;
+  border-radius: var(--borderRadius);
 }
 
 .specific-recipe .copy-btn,
@@ -507,7 +514,7 @@ a[target='_blank']::after {
   background: var(--green-light);
   color: var(--green-dark);
   text-align: center;
-  margin: 1em auto;
+  margin: 0.5em 1em;
   text-transform: capitalize;
   animation: fadeIn linear 1.5s;
   -webkit-animation: fadeIn linear 1.5s;
@@ -586,6 +593,28 @@ a[target='_blank']::after {
 
 /* larger screens */
 
+@media screen and (min-width: 500px) {
+  /* meal results */
+
+  .meal-results-title {
+    margin-top: 2em;
+  }
+
+  .meal-results-title h3 {
+    font-size: 1.953rem;
+    margin: 10px 10px;
+  }
+
+  .meal-results-title h5 {
+    font-size: 1.25rem;
+    margin: 20px 10px;
+  }
+
+  .meal-results p {
+    padding: 0 1.5em;
+  }
+}
+
 @media screen and (min-width: 600px) {
   /* main container */
   .main-container {
@@ -607,25 +636,5 @@ a[target='_blank']::after {
     width: 45%;
     margin: 0.5em 0.75em;
     padding: 0.75em 0;
-  }
-
-  /* meal results */
-
-  .meal-results-title {
-    margin-top: 2em;
-  }
-
-  .meal-results-title h3 {
-    font-size: 1.953rem;
-    margin: 10px 10px;
-  }
-
-  .meal-results-title h5 {
-    font-size: 1.25rem;
-    margin: 20px 10px;
-  }
-
-  .meal-results p {
-    padding: 0 1.5em;
   }
 }

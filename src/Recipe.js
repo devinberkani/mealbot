@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useGlobalContext } from './context';
 import data from './data';
 
-const Recipe = ({
-  id,
-  meal,
-  showAllRecipes,
-  hideAllRecipes,
-  setShowAllRecipes,
-  setHideAllRecipes,
-}) => {
+const Recipe = ({ id, meal }) => {
+  // ===============
+  // import context
+  // ===============
+  const {
+    showAllRecipes,
+    hideAllRecipes,
+    setShowAllRecipes,
+    setHideAllRecipes,
+  } = useGlobalContext();
+
+  //show/hide individual recipe
   const [showRecipe, setShowRecipe] = useState(false);
+  //specific recipe state for displaying to user
   const [specificRecipe, setSpecificRecipe] = useState('');
+  //if this state is true...
   const [linkCopied, setLinkCopied] = useState(false);
+  //...the copied alert will display
   const [copiedAlert, setCopiedAlert] = useState('');
 
   //show all recipes logic

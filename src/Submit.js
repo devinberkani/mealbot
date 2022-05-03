@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
+import { useGlobalContext } from './context';
 import data from './data';
 import Recipe from './Recipe';
 
-const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
-  const [meals, setMeals] = useState([]);
-  const [showAllRecipes, setShowAllRecipes] = useState(false);
-  const [hideAllRecipes, setHideAllRecipes] = useState(true);
+const Submit = ({}) => {
+  // ===============
+  // import context
+  // ===============
+  const {
+    meals,
+    setMeals,
+    showAllRecipes,
+    setShowAllRecipes,
+    hideAllRecipes,
+    setHideAllRecipes,
+    numOfMeals,
+    numOfVeg,
+    mealAlert,
+    vegAlert,
+  } = useGlobalContext();
 
   const calculateMeals = (numOfMeals, numOfVeg) => {
     //initialize the master meal array to push all final meals to
@@ -160,14 +173,7 @@ const Submit = ({ numOfMeals, numOfVeg, mealAlert, vegAlert }) => {
                   </span>
                   <span className='meal'> {meal}</span>
                   <span className='recipe'>
-                    <Recipe
-                      id={id}
-                      meal={meal}
-                      showAllRecipes={showAllRecipes}
-                      hideAllRecipes={hideAllRecipes}
-                      setShowAllRecipes={setShowAllRecipes}
-                      setHideAllRecipes={setHideAllRecipes}
-                    />
+                    <Recipe id={id} meal={meal} />
                   </span>
                 </p>
               </div>
