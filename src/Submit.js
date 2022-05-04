@@ -136,8 +136,8 @@ const Submit = ({}) => {
           <div>
             <div className='meal-results-title'>
               <h3>
-                <span className='object'>⇩</span> {meals.length} meals planned{' '}
-                <span className='object'>⇩</span>
+                <span className='object'>↓</span> {meals.length} meals planned{' '}
+                <span className='object'>↓</span>
               </h3>
             </div>
             {/* show all/hide all recipe buttons */}
@@ -182,8 +182,8 @@ const Submit = ({}) => {
         ) : (
           <div className='meal-results-title'>
             <h5>
-              <span className='object'>⇩</span> your meals will appear below{' '}
-              <span className='object'>⇩</span>
+              <span className='object'>↓</span> your meals will appear below{' '}
+              <span className='object'>↓</span>
             </h5>
           </div>
           // <h5 className='result-directions'>*your results will appear below</h5>
