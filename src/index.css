@@ -390,7 +390,7 @@ body {
 }
 
 .meal-results-title h5 {
-  font-size: 0.85em;
+  font-size: 0.7em;
   text-align: center;
   color: var(--grey-500);
   font-weight: bold;
@@ -620,7 +620,7 @@ a[target='_blank']::after {
   .main-container {
     padding: 1.9em 0;
     padding-bottom: 0;
-    max-height: 90vh;
+    max-height: 100vh;
   }
 
   /* hide and show recipe buttons */
